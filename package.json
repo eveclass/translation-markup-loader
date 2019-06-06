@@ -6,6 +6,9 @@
   "types": "lib/src/main.d.ts",
   "author": "Shift Code",
   "license": "MIT",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.release.json",
     "test": "jest"
