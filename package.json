@@ -1,0 +1,23 @@
+{
+  "name": "translation-loader",
+  "version": "1.0.0",
+  "description": "Yaml to JS translation file loader",
+  "main": "lib/src/main.js",
+  "types": "lib/src/main.d.ts",
+  "author": "Shift Code",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.release.json",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.5",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "typescript": "^3.5.1"
+  }
+}
