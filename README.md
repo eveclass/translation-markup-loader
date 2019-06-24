@@ -8,7 +8,17 @@ A YAML translation file begins with the declaration of all supported languages o
 
 ### Intall
 
-TODO: npm tal e tal
+**NPM:**
+
+```sh
+npm install @shiftcode/translation-markup-loader
+```
+
+**Yarn:**
+
+```sh
+yarn add @shiftcode/translation-markup-loader
+```
 
 ### Config
 

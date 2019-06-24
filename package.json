@@ -1,7 +1,7 @@
 {
-  "name": "translation-loader",
+  "name": "@shiftcode/translation-markup-loader",
   "version": "1.0.0",
-  "description": "Yaml to JS translation file loader",
+  "description": "Yaml to JS translation file loader.",
   "main": "lib/src/main.js",
   "types": "lib/src/main.d.ts",
   "author": "Shift Code",
