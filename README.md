@@ -29,7 +29,7 @@ module: {
   rules: [
     {
       test: /\.yaml$/,
-      use: "translation-loader"
+      use: "@shiftcode/translation-markup-loader"
      }
    ]
  }

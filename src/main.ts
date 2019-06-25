@@ -1,5 +1,4 @@
-// tslint:disable-next-line: no-implicit-dependencies
-import { getJSTranslation } from 'translate-markup';
+import { getJSTranslation } from '@shiftcode/translation-markup';
 
 export default async function(source: string) {
   const translationContent = await getJSTranslation({

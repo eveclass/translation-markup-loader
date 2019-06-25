@@ -1,6 +1,6 @@
 {
   "name": "@shiftcode/translation-markup-loader",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Yaml to JS translation file loader.",
   "main": "lib/src/main.js",
   "types": "lib/src/main.d.ts",
@@ -14,10 +14,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@shiftcode/translation-markup": "^1.0.0",
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.5",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.4",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-microsoft-contrib": "^6.2.0",
