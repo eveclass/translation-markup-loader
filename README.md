@@ -1,12 +1,56 @@
-# Translation-Loader
+# Translation-Markup-Loader
 
-Webpack loader to import YAML translation files and use it in JS code as objects.
+Translating your project to multiple languages just became a lot easier! Meet Translation Markup Loader, a webpack loader that helps you organize your translations in a much cleaner way.
 
-A YAML translation file begins with the declaration of all supported languages of your application. A custom numeric code (key) must be assigned to each one of the declared languages. Then, you declare each translation, based on the initial languages index.
+Using [Translation Markup](https://translationmarkup.com/), Translation Markup Loader let's you write your translations in yaml files, and use them as a JS objects in your code!
 
 ## Getting started
 
-### Intall
+Translation Markup Loader lets you organize your translation files in wichever way you want using yaml instead of JS, simplifying the organization of your files and eliminating all the JSON boilerplate, lets see some code:
+
+`paymentTranslations.lang.yaml`
+
+```
+LANGUAGES:
+  1: enUS
+  2: ptBR
+
+CREDIT_CARD:
+  NAME:
+    1: Credit Card
+    2: Cartão de Crédito
+```
+
+Now, just import and use your translation as a plain JS object and integrate with any `i18n` library you want to.
+
+`app.js`
+
+```
+import paymentTranslations from './paymentTranslations.lang.yaml';
+
+console.log(paymentTranslations);
+
+/*
+*{
+*  enUS: {
+*    CREDIT_CARD: {
+*      NAME: "Credit Card"
+*    }
+*  },
+*  ptBR: {
+*    CREDIT_CARD: {
+*      NAME: "Cartão de Crédito"
+*    }
+*  }
+*}
+*/
+```
+
+#### Languages Key
+
+At the top of each translation file there should be defined the LANGUAGES key, with all languages mapping. In the example above `1: enUs` maps number 1 as language enUS and `2: ptBR` maps number 2 as ptBR.
+
+### Install
 
 **NPM:**
 
@@ -22,64 +66,80 @@ yarn add @shiftcode/translation-markup-loader
 
 ### Config
 
-On your webpack config file:
+Translation Markup Loader is a webpack loader, to learn about them go to [loaders.](https://webpack.js.org/concepts/loaders/)
+
+To configure Translation Markup Loader you need to register a new loader and tell webpack wich type of files to look for.
+
+In this documentation we use the `.lang.yaml` extensions as a best practice to separate your regular `.yaml` from the translations files, but you could use just the `.yaml` extension in the regex.
+
+#### Webpack
+
+`webpack.config.js`
 
 ```
 module: {
   rules: [
     {
-      test: /\.yaml$/,
+      test: /\.lang.yaml$/,
       use: "@shiftcode/translation-markup-loader"
      }
    ]
  }
 ```
 
-On you JS file, just import or require the YAML translation file and use the translations as objects.
+#### Vuejs
+
+When configuring with [Vue.js](https://vuejs.org/) you need to use the [Vue config](https://cli.vuejs.org/guide/webpack.html#simple-configuration) file to chain the webpack configuration and declare a new loader. [(learn more)](https://cli.vuejs.org/guide/webpack.html#adding-a-new-loader)
+
+`vue.config.js`
+
+```
+module.exports = {
+  chainWebpack: config => {
+    // Adding Translation Markup Loader
+    config.module
+      .rule("translations")
+      .test(/\.lang.yaml$/)
+      .use("@shiftcode/translation-markup-loader")
+      .loader("@shiftcode/translation-markup-loader")
+      .end();
+  }
+};
+```
+
+#### Nuxtjs
+
+In [Nuxt.js](https://nuxtjs.org/) you need modify you [Nuxt config](https://nuxtjs.org/guide/configuration/) file to push a new rule to the webpack config in the build part of the configuration. [(learn more)](https://nuxtjs.org/faq/extend-webpack/)
+
+`nuxt.config.js`
+
+```
+{
+  // ... rest of config
+
+   build: {
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.lang.yaml$/,
+        use: { loader: '@shiftcode/translation-markup-loader' },
+      });
+    },
+   }
+
+   // ... rest of config
+};
+```
 
 ## Examples
-
-YAML File 'translations.yaml':
-
-```
-LANGUAGES:
-  1: enUS
-  2: ptBR
-
-CREDIT_CARD:
-  NAME:
-    1: Credit Card
-    2: Cartão de Crédito
-
-```
-
-JS:
-
-```
-import translations from './translations.yaml';
-
-console.log(translations);
-/*
-* {
-*  enUS: {
-*    CREDIT_CARD: {
-*      NAME: "Credit Card"
-*    }
-*  },
-*  ptBR: {
-*    CREDIT_CARD: {
-*      NAME: "Cartão de Crédito"
-*    }
-*  }
-* }
-*/
-```
 
 ### Multiple translations for some languages
 
 If you have the same translation for more than one language, you can separate their indexes by `_` in the translation key so you don't have to repeat it.
 
-YAML File 'translations.yaml':
+`paymentTranslations.lang.yaml`
 
 ```
 LANGUAGES:
@@ -103,12 +163,12 @@ CREDIT_CARD:
       1_2_3: Diners
 ```
 
-JS:
+`app.js`
 
 ```
-import translations from './translations.yaml';
+import paymentTranslations from './paymentTranslations.lang.yaml';
 
-console.log(translations);
+console.log(paymentTranslations);
 /*
 * {
 *  enUS: {
