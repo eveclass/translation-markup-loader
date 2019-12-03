@@ -1,6 +1,6 @@
 {
   "name": "@shiftcode/translation-markup-loader",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Yaml to JS translation file loader.",
   "main": "lib/src/main.js",
   "types": "lib/src/main.d.ts",
@@ -14,7 +14,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@shiftcode/translation-markup": "^1.0.1",
+    "@shiftcode/translation-markup": "^1.0.5",
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.5",
     "jest": "^24.8.0",

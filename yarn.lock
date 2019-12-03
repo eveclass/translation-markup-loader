@@ -285,10 +285,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@shiftcode/translation-markup@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@shiftcode/translation-markup/-/translation-markup-1.0.1.tgz#e6549f07bf7cc4b992299a1cec81ba81c9392a3e"
-  integrity sha512-qmvs5/wSN9KKoA+3ldQRhsSijWGg2m6Q7dxDVIfVJDfVXJGq6b791zHdWHHvz28m1utFz3yjIWhkwPcVro1gdQ==
+"@shiftcode/translation-markup@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@shiftcode/translation-markup/-/translation-markup-1.0.5.tgz#82a98c26654207ff691f29012e35de7645e4e27a"
+  integrity sha512-Jo+knYknO6TOoPl3aoTFv4D5cNLqfu/e7EZC+96JStE9AvandG1Uif8qeE+8D6TSW5q2fG/Aif+vXG3zeoSZ9A==
   dependencies:
     flat "^4.1.0"
     glob "^7.1.4"
